@@ -11,6 +11,7 @@ linters-settings:
 linters:
   disable-all: true
   enable:
+    - asciicheck
     - deadcode
     - goconst
     - goimports
