@@ -15,6 +15,7 @@ linters:
     - deadcode
     - goconst
     - goimports
+    - gofmt
     - gosimple
     - ineffassign
     - misspell
