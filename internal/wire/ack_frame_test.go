@@ -217,6 +217,27 @@ var _ = Describe("ACK Frame (for IETF QUIC)", func() {
 			Expect(buf.Bytes()).To(Equal(expected))
 		})
 
+		It("writes an ACK-ECN frame", func() {
+			buf := &bytes.Buffer{}
+			f := &AckFrame{
+				AckRanges: []AckRange{{Smallest: 10, Largest: 2000}},
+				ECT0:      13,
+				ECT1:      37,
+				ECNCE:     12345,
+			}
+			err := f.Write(buf, versionIETFFrames)
+			Expect(err).ToNot(HaveOccurred())
+			expected := []byte{0x3}
+			expected = append(expected, encodeVarInt(2000)...) // largest acked
+			expected = append(expected, 0)                     // delay
+			expected = append(expected, encodeVarInt(0)...)    // num ranges
+			expected = append(expected, encodeVarInt(2000-10)...)
+			expected = append(expected, encodeVarInt(13)...)
+			expected = append(expected, encodeVarInt(37)...)
+			expected = append(expected, encodeVarInt(12345)...)
+			Expect(buf.Bytes()).To(Equal(expected))
+		})
+
 		It("writes a frame that acks a single packet", func() {
 			buf := &bytes.Buffer{}
 			f := &AckFrame{
