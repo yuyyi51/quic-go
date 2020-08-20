@@ -626,6 +626,7 @@ func (h *sentPacketHandler) onVerifiedLossDetectionTimeout() error {
 			h.tracer.UpdatedPTOCount(h.ptoCount)
 		}
 		h.numProbesToSend += 2
+		//nolint:exhaustive // We never arm a PTO timer for 0-RTT packets.
 		switch encLevel {
 		case protocol.EncryptionInitial:
 			h.ptoMode = SendPTOInitial

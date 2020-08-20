@@ -60,6 +60,7 @@ func (p *packetContents) EncryptionLevel() protocol.EncryptionLevel {
 	if !p.header.IsLongHeader {
 		return protocol.Encryption1RTT
 	}
+	//nolint:exhaustive // Will never be called for Retry packets (and they don't have encrypted data).
 	switch p.header.Type {
 	case protocol.PacketTypeInitial:
 		return protocol.EncryptionInitial
@@ -413,6 +414,7 @@ func (p *packetPacker) maybeAppendCryptoPacket(buffer *packetBuffer, maxPacketSi
 	var sealer sealer
 	var s cryptoStream
 	var hasRetransmission bool
+	//nolint:exhaustive // Initial and Handshake are the only two encryption levels here.
 	switch encLevel {
 	case protocol.EncryptionInitial:
 		s = p.initialStream
@@ -455,6 +457,7 @@ func (p *packetPacker) maybeAppendCryptoPacket(buffer *packetBuffer, maxPacketSi
 	if hasRetransmission {
 		for {
 			var f wire.Frame
+			//nolint:exhaustive // 0-RTT packets can't contain any retransmission.s
 			switch encLevel {
 			case protocol.EncryptionInitial:
 				f = p.retransmissionQueue.GetInitialFrame(remainingLen)
@@ -570,6 +573,7 @@ func (p *packetPacker) MaybePackProbePacket(encLevel protocol.EncryptionLevel) (
 	var contents *packetContents
 	var err error
 	buffer := getPacketBuffer()
+	//nolint:exhaustive Probe packets are never sent for 0-RTT.
 	switch encLevel {
 	case protocol.EncryptionInitial:
 		contents, err = p.maybeAppendCryptoPacket(buffer, p.maxPacketSize, protocol.EncryptionInitial)
@@ -652,6 +656,7 @@ func (p *packetPacker) getLongHeader(encLevel protocol.EncryptionLevel) *wire.Ex
 	hdr.PacketNumber = pn
 	hdr.PacketNumberLen = pnLen
 
+	//nolint:exhaustive // 1-RTT packets are not long header packets.
 	switch encLevel {
 	case protocol.EncryptionInitial:
 		hdr.Type = protocol.PacketTypeInitial
