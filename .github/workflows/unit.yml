@@ -1,0 +1,42 @@
+on: [push, pull_request]
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go: [ "1.14", "1.15" ]
+    name: Unit tests (Go ${{ matrix.go }})
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-go@v2.1.1
+        with: 
+          go-version: ${{ matrix.go }}
+      - run: go version
+      - name: Install test tools
+        run: |
+          go get golang.org/x/tools/cmd/cover
+          go get github.com/onsi/ginkgo/ginkgo
+          go get github.com/onsi/gomega
+      - name: Install dependencies
+        run: go build
+      - name: Run tests
+        run: ginkgo -r -v -cover -randomizeAllSpecs -randomizeSuites -trace -skipPackage integrationtests,benchmark
+      - name: Run tests with race detector  
+        run: ginkgo -r -v -race -randomizeAllSpecs -randomizeSuites -trace -skipPackage integrationtests,benchmark
+      - name: Gather coverage reports
+        run: cat `find . -name "*.coverprofile"` > coverage_go${{ matrix.go }}.txt
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: ./coverage_go${{ matrix.go }}.txt
+  codecov:
+    needs: [ unit ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download coverage reports
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage
+          path: .
+      - run: ls -al
