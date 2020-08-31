@@ -8,10 +8,10 @@ import (
 	"net"
 	"time"
 
-	"github.com/lucas-clemente/quic-go/internal/protocol"
-	"github.com/lucas-clemente/quic-go/internal/utils"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"github.com/yuyyi51/quic-go/internal/protocol"
+	"github.com/yuyyi51/quic-go/internal/utils"
 )
 
 var _ = Describe("Transport Parameters", func() {

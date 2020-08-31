@@ -5,11 +5,11 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/lucas-clemente/quic-go/internal/utils"
+	"github.com/yuyyi51/quic-go/internal/utils"
 
-	"github.com/lucas-clemente/quic-go/internal/protocol"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"github.com/yuyyi51/quic-go/internal/protocol"
 )
 
 // on the CIs, the timing is a lot less precise, so scale every duration by this factor

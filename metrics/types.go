@@ -1,6 +1,6 @@
 package metrics
 
-import "github.com/lucas-clemente/quic-go/logging"
+import "github.com/yuyyi51/quic-go/logging"
 
 type perspective logging.Perspective
 

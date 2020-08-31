@@ -3,9 +3,9 @@ package congestion
 import (
 	"time"
 
-	"github.com/lucas-clemente/quic-go/internal/protocol"
-	"github.com/lucas-clemente/quic-go/internal/utils"
-	"github.com/lucas-clemente/quic-go/logging"
+	"github.com/yuyyi51/quic-go/internal/protocol"
+	"github.com/yuyyi51/quic-go/internal/utils"
+	"github.com/yuyyi51/quic-go/logging"
 )
 
 const (

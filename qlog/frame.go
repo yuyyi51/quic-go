@@ -3,8 +3,8 @@ package qlog
 import (
 	"fmt"
 
-	"github.com/lucas-clemente/quic-go/internal/wire"
-	"github.com/lucas-clemente/quic-go/logging"
+	"github.com/yuyyi51/quic-go/internal/wire"
+	"github.com/yuyyi51/quic-go/logging"
 
 	"github.com/francoispqt/gojay"
 )

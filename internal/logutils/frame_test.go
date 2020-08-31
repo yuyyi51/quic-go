@@ -1,10 +1,10 @@
 package logutils
 
 import (
-	"github.com/lucas-clemente/quic-go/internal/wire"
-	"github.com/lucas-clemente/quic-go/logging"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"github.com/yuyyi51/quic-go/internal/wire"
+	"github.com/yuyyi51/quic-go/logging"
 )
 
 var _ = Describe("CRYPTO frame", func() {

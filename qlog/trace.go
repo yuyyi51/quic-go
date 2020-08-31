@@ -5,7 +5,7 @@ import (
 
 	"github.com/francoispqt/gojay"
 
-	"github.com/lucas-clemente/quic-go/internal/protocol"
+	"github.com/yuyyi51/quic-go/internal/protocol"
 )
 
 type topLevel struct {

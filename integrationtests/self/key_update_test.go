@@ -7,9 +7,9 @@ import (
 	"net"
 	"os"
 
-	quic "github.com/lucas-clemente/quic-go"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	quic "github.com/yuyyi51/quic-go"
 )
 
 var _ = Describe("Key Update tests", func() {

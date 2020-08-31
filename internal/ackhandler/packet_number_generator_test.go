@@ -3,10 +3,10 @@ package ackhandler
 import (
 	"math"
 
-	"github.com/lucas-clemente/quic-go/internal/protocol"
-	"github.com/lucas-clemente/quic-go/internal/wire"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"github.com/yuyyi51/quic-go/internal/protocol"
+	"github.com/yuyyi51/quic-go/internal/wire"
 )
 
 var _ = Describe("Packet Number Generator", func() {

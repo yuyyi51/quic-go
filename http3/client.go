@@ -10,9 +10,9 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/lucas-clemente/quic-go"
-	"github.com/lucas-clemente/quic-go/internal/utils"
 	"github.com/marten-seemann/qpack"
+	"github.com/yuyyi51/quic-go"
+	"github.com/yuyyi51/quic-go/internal/utils"
 )
 
 // MethodGet0RTT allows a GET request to be sent using 0-RTT.

@@ -6,16 +6,16 @@ import (
 	"net"
 	"time"
 
-	"github.com/lucas-clemente/quic-go/internal/qerr"
+	"github.com/yuyyi51/quic-go/internal/qerr"
 
-	"github.com/lucas-clemente/quic-go/internal/ackhandler"
+	"github.com/yuyyi51/quic-go/internal/ackhandler"
 
 	"github.com/golang/mock/gomock"
-	"github.com/lucas-clemente/quic-go/internal/handshake"
-	"github.com/lucas-clemente/quic-go/internal/mocks"
-	mockackhandler "github.com/lucas-clemente/quic-go/internal/mocks/ackhandler"
-	"github.com/lucas-clemente/quic-go/internal/protocol"
-	"github.com/lucas-clemente/quic-go/internal/wire"
+	"github.com/yuyyi51/quic-go/internal/handshake"
+	"github.com/yuyyi51/quic-go/internal/mocks"
+	mockackhandler "github.com/yuyyi51/quic-go/internal/mocks/ackhandler"
+	"github.com/yuyyi51/quic-go/internal/protocol"
+	"github.com/yuyyi51/quic-go/internal/wire"
 
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
