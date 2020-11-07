@@ -72,6 +72,14 @@ type stream struct {
 	version protocol.VersionNumber
 }
 
+func (s *stream) LocalAddr() net.Addr {
+	return nil
+}
+
+func (s *stream) RemoteAddr() net.Addr {
+	return nil
+}
+
 var _ Stream = &stream{}
 
 type deadlineError struct{}

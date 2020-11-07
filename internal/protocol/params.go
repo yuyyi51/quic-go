@@ -177,3 +177,5 @@ const Max0RTTQueues = 32
 // To avoid blocking, this value has to be smaller than MaxSessionUnprocessedPackets.
 // To avoid packets being dropped as undecryptable by the session, this value has to be smaller than MaxUndecryptablePackets.
 const Max0RTTQueueLen = 32
+
+const SendStreamBuffer = 128 * 1024 // 128KB

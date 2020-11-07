@@ -17,7 +17,7 @@ import (
 
 const addr = "localhost:4242"
 
-const message = "foobar"
+const message = "foobarwoqunianmailegebiao1234hehehehehewocaonima"
 
 // We start a server echoing data on the first stream the client opens,
 // then connect with a client, send the message, and wait for its receipt.
@@ -69,6 +69,7 @@ func clientMain() error {
 	if err != nil {
 		return err
 	}
+	fmt.Printf("client send done\n")
 
 	buf := make([]byte, len(message))
 	_, err = io.ReadFull(stream, buf)

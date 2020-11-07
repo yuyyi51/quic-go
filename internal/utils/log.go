@@ -90,7 +90,9 @@ func (l *defaultLogger) logMessage(format string, args ...interface{}) {
 	if len(l.prefix) > 0 {
 		pre += l.prefix + " "
 	}
-	log.Printf(pre+format, args...)
+	//log.Printf(pre+format, args...)
+	fmted := fmt.Sprintf(pre+format, args...)
+	fmt.Printf("%s %s\n", time.Now().Format(time.RFC3339Nano), fmted)
 }
 
 func (l *defaultLogger) WithPrefix(prefix string) Logger {
